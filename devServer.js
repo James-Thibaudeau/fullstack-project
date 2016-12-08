@@ -2,6 +2,9 @@ var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
 var config = require('./webpack.config.dev');
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.IP, '27017');
 
 var app = express();
 var compiler = webpack(config);
