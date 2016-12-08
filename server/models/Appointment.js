@@ -4,10 +4,14 @@ var Schema = mongoose.Schema;
 
 // create a schema
 var AppointmentSchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true
+  },
   creatorId: {
       type: Schema.Types.ObjectId,
-      ref: 'User'
+      ref: 'User',
+      required: true,
   },
   location: {
       locationName: { 
@@ -27,10 +31,11 @@ var AppointmentSchema = new Schema({
     type: Date,
     required: true,
   },
-  guests: [{
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }],
+  guests: {
+    type:[Schema.Types.ObjectId], 
+    ref: 'User', 
+    required:true
+  },
   created_at: {
     type: Date,
     required: true,

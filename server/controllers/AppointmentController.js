@@ -1,14 +1,16 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/Appointment');
+var Appointment = require('../models/Appointment');
 
 router.route('/')
 
     .post(function (req, res) {
 
         var appointment = new Appointment();     
-        appointment.username = req.body.username; 
-        appointment.password = req.body.password;
+        appointment.creatorId = req.body.creatorId; 
+        appointment.date = req.body.date;
+        appointment.guests = req.body.guests;
+        
 
         appointment.save(function (err) {
             if (err)
@@ -20,7 +22,7 @@ router.route('/')
     })
 
     .get(function (req, res) {
-        User.find(function (err, appointments) {
+        Appointment.find(function (err, appointments) {
             if (err)
                 res.send(err);
 
@@ -33,7 +35,7 @@ router.route('/:appointment_id')
 
 
     .get(function(req, res) {
-        User.findById(req.params.appointment_id, function(err, appointment) {
+        Appointment.findById(req.params.appointment_id, function(err, appointment) {
             if (err)
                 res.send(err);
             res.json(appointment);
@@ -41,30 +43,30 @@ router.route('/:appointment_id')
     })
 
 
-    .put(function (req, res) {
+    // .put(function (req, res) {
 
 
-        User.findById(req.params.appointment_id, function (err, appointment) {
+    //     Appointment.findById(req.params.appointment_id, function (err, appointment) {
 
-            if (err)
-                res.send(err);
+    //         if (err)
+    //             res.send(err);
 
-            appointment.name = req.body.name;  
+    //         appointment.name = req.body.name;  
 
 
-            appointment.save(function (err) {
-                if (err)
-                    res.send(err);
+    //         appointment.save(function (err) {
+    //             if (err)
+    //                 res.send(err);
 
-                res.json({ message: 'Appointment updated!' });
-            });
+    //             res.json({ message: 'Appointment updated!' });
+    //         });
 
-        });
-    })
+    //     });
+    // })
 
 
     .delete(function (req, res) {
-        User.remove({
+        Appointment.remove({
             _id: req.params.appointment_id
         }, function (err, appointment) {
             if (err)

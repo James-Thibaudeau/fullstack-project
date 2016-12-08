@@ -16,7 +16,10 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.get('*', function(req, res) {
+app.use('/api/users', require('./controllers/UserController'));
+app.use('/api/appointments', require('./controllers/AppointmentController'));
+
+app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
