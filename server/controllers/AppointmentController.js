@@ -6,7 +6,8 @@ router.route('/')
 
     .post(function (req, res) {
 
-        var appointment = new Appointment();     
+        var appointment = new Appointment();
+        appointment.name = req.body.name;
         appointment.creatorId = req.body.creatorId; 
         appointment.date = req.body.date;
         appointment.guests = req.body.guests;
@@ -14,7 +15,7 @@ router.route('/')
 
         appointment.save(function (err) {
             if (err)
-                res.send(err);
+                return res.send(err);
 
             res.json({ message: 'Appointment created!' });
         });
@@ -24,7 +25,7 @@ router.route('/')
     .get(function (req, res) {
         Appointment.find(function (err, appointments) {
             if (err)
-                res.send(err);
+                return res.send(err);
 
             res.json(appointments);
         });
@@ -37,7 +38,7 @@ router.route('/:appointment_id')
     .get(function(req, res) {
         Appointment.findById(req.params.appointment_id, function(err, appointment) {
             if (err)
-                res.send(err);
+                return res.send(err);
             res.json(appointment);
         });
     })
@@ -70,7 +71,7 @@ router.route('/:appointment_id')
             _id: req.params.appointment_id
         }, function (err, appointment) {
             if (err)
-                res.send(err);
+                return res.send(err);
 
             res.json({ message: 'Appointment deleted' });
         });
