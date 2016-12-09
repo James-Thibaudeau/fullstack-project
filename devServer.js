@@ -1,5 +1,6 @@
 var path = require('path');
 var express = require('express');
+var bodyParser = require('body-parser')
 var webpack = require('webpack');
 var config = require('./webpack.config.dev');
 var mongoose = require('mongoose');
@@ -16,8 +17,12 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.use('/api/users', require('./controllers/UserController'));
-app.use('/api/appointments', require('./controllers/AppointmentController'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+app.use('/api/users', require('./server/controllers/UserController'));
+app.use('/api/appointments', require('./server/controllers/AppointmentController'));
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));

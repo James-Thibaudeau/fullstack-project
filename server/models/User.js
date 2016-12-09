@@ -5,6 +5,12 @@ var Schema = mongoose.Schema;
 
 // create a schema
 var UserSchema = new Schema({
+  username: {
+    type: String,
+    required: true,
+    trim: true,
+    unique: true
+  },
   firstName: {
       type: String,
       required: true
@@ -12,12 +18,6 @@ var UserSchema = new Schema({
   lastName: {
       type: String,
       required: true
-  },
-  username: {
-    type: String,
-    required: true,
-    trim: true,
-    unique: true
   },
   password: {
     type: String,

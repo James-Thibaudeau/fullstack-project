@@ -5,6 +5,8 @@ var User = require('../models/User');
 router.route('/')
 
     .post(function (req, res) {
+        
+        console.log(req.body);
 
         var user = new User();     
         user.username = req.body.username; 
