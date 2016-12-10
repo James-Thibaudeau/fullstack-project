@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-
+//import bootstrap
+import 'bootstrap/less/bootstrap.less';
 // Import Components
 import Index from './components/Index';
 
