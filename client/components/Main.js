@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router';
+import LoginBox from './Login/LoginBox';
 
 class Main extends React.Component {
     render() {
         return (
             <div>
-                <h1>
-                <Link to="/">FullStack Project</Link>
-                </h1>
+                <h1>FullStack Project</h1>
+                <LoginBox />
 
             </div>
         );
