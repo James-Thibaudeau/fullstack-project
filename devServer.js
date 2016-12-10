@@ -1,11 +1,11 @@
 var path = require('path');
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 var webpack = require('webpack');
 var config = require('./webpack.config.dev');
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.IP, '27017');
+mongoose.connect(process.env.IP + ':27017/fullstack');
 
 var app = express();
 var compiler = webpack(config);
@@ -20,7 +20,7 @@ app.use(require('webpack-hot-middleware')(compiler));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+// app.use('/api/login', require('./server/controllers/LoginController'));
 app.use('/api/users', require('./server/controllers/UserController'));
 app.use('/api/appointments', require('./server/controllers/AppointmentController'));
 

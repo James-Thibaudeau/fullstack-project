@@ -50,14 +50,14 @@ router.route('/:appointment_id')
     //     Appointment.findById(req.params.appointment_id, function (err, appointment) {
 
     //         if (err)
-    //             res.send(err);
+    //            return res.send(err);
 
     //         appointment.name = req.body.name;  
 
 
     //         appointment.save(function (err) {
     //             if (err)
-    //                 res.send(err);
+    //                 return res.send(err);
 
     //             res.json({ message: 'Appointment updated!' });
     //         });
