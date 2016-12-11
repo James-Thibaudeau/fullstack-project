@@ -16,7 +16,7 @@ router.route('/')
 
         user.save(function (err) {
             if (err)
-                res.send(err);
+                return res.send(err);
 
             res.json({ message: 'User created!' });
         });
@@ -26,7 +26,7 @@ router.route('/')
     .get(function (req, res) {
         User.find(function (err, users) {
             if (err)
-                res.send(err);
+                return res.send(err);
 
             res.json(users);
         });
@@ -39,7 +39,7 @@ router.route('/:user_id')
     .get(function(req, res) {
         User.findById(req.params.user_id, function(err, user) {
             if (err)
-                res.send(err);
+                return res.send(err);
             res.json(user);
         });
     })
@@ -72,7 +72,7 @@ router.route('/:user_id')
             _id: req.params.user_id
         }, function (err, user) {
             if (err)
-                res.send(err);
+                return res.send(err);
 
             res.json({ message: 'Successfully deleted' });
         });
