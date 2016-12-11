@@ -13,7 +13,7 @@ class LoginBox extends React.Component {
                     <FormControl type={type} placeholder={type} />
                 </Col>
             </FormGroup>
-            )
+            );
     }
     
     render() {
