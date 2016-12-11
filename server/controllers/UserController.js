@@ -4,25 +4,6 @@ var User = require('../models/User');
 
 router.route('/')
 
-    .post(function (req, res) {
-        
-        console.log(req.body);
-
-        var user = new User();     
-        user.username = req.body.username; 
-        user.password = req.body.password;
-        user.firstName = req.body.firstName;
-        user.lastName = req.body.lastName;
-
-        user.save(function (err) {
-            if (err)
-                return res.send(err);
-
-            res.json({ message: 'User created!' });
-        });
-
-    })
-
     .get(function (req, res) {
         User.find(function (err, users) {
             if (err)
