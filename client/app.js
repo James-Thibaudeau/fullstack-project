@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-//import bootstrap
+//import bootstrap/font-awesome
 import 'bootstrap/less/bootstrap.less';
+import 'font-awesome/less/font-awesome.less';
 // Import Components
 import Index from './components/Index';
 
