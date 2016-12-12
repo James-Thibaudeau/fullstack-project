@@ -34,7 +34,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // configure passport
-
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
