@@ -1,48 +1,49 @@
-var express = require('express');
-var router = express.Router();
 var Appointment = require('../models/Appointment');
 
-router.route('/')
+exports.getAppointments = function (req, res) {
+    Appointment.find(function (err, appointments) {
+        if (err)
+            return res.send(err);
 
-    .post(function (req, res) {
+        res.json(appointments);
+    });
+};
 
-        var appointment = new Appointment();
-        appointment.name = req.body.name;
-        appointment.creatorId = req.body.creatorId; 
-        appointment.date = req.body.date;
-        appointment.guests = req.body.guests;
-        
+exports.newAppointment = function (req, res) {
+    var appointment = new Appointment();
+    appointment.name = req.body.name;
+    appointment.creatorId = req.body.creatorId; 
+    appointment.date = req.body.date;
+    appointment.guests = req.body.guests;
+    
 
-        appointment.save(function (err) {
-            if (err)
-                return res.send(err);
+    appointment.save(function (err) {
+        if (err)
+            return res.send(err);
 
-            res.json({ message: 'Appointment created!' });
-        });
-
-    })
-
-    .get(function (req, res) {
-        Appointment.find(function (err, appointments) {
-            if (err)
-                return res.send(err);
-
-            res.json(appointments);
-        });
+        res.json({ message: 'Appointment created!' });
     });
 
+};
 
-router.route('/:appointment_id')
+exports.getAppointmentById =  function(req, res) {
+    Appointment.findById(req.params.appointment_id, function(err, appointment) {
+        if (err)
+            return res.send(err);
+        res.json(appointment);
+    });
+};
 
+exports.removeAppointment = function (req, res) {
+    Appointment.remove({
+        _id: req.params.appointment_id
+    }, function (err, appointment) {
+        if (err)
+            return res.send(err);
 
-    .get(function(req, res) {
-        Appointment.findById(req.params.appointment_id, function(err, appointment) {
-            if (err)
-                return res.send(err);
-            res.json(appointment);
-        });
-    })
-
+        res.json({ message: 'Appointment deleted' });
+    });
+};
 
     // .put(function (req, res) {
 
@@ -64,17 +65,3 @@ router.route('/:appointment_id')
 
     //     });
     // })
-
-
-    .delete(function (req, res) {
-        Appointment.remove({
-            _id: req.params.appointment_id
-        }, function (err, appointment) {
-            if (err)
-                return res.send(err);
-
-            res.json({ message: 'Appointment deleted' });
-        });
-    });
-
-module.exports = router;

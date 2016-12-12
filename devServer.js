@@ -38,15 +38,15 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//routes
+app.use('/api', require('./server/routes.js'));
 
-app.use('/api/auth', require('./server/controllers/LoginController'));
-app.use('/api/users', require('./server/controllers/UserController'));
-app.use('/api/appointments', require('./server/controllers/AppointmentController'));
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+//server start
 app.listen(process.env.PORT, process.env.IP, function(err) {
   if (err) {
     console.log(err);

@@ -1,13 +1,7 @@
-var express = require('express');
-var router = express.Router();
 var passport = require('passport');
-
 var User = require('../models/User');
 
-router.route('/');
-
-
-router.post('/register', function(req, res) {
+exports.register = function(req, res) {
   var user = { 
       username: req.body.username, 
       firstName: req.body.firstName, 
@@ -27,9 +21,9 @@ router.post('/register', function(req, res) {
       });
     });
   });
-});
+};
 
-router.post('/login', function(req, res, next) {
+exports.login = function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) {
       return next(err);
@@ -50,16 +44,16 @@ router.post('/login', function(req, res, next) {
       });
     });
   })(req, res, next);
-});
+};
 
-router.get('/logout', function(req, res) {
+exports.logout = function(req, res) {
   req.logout();
   res.status(200).json({
     status: 'Bye!'
   });
-});
+};
 
-router.get('/status', function(req, res) {
+exports.status = function(req, res) {
   if (!req.isAuthenticated()) {
     return res.status(200).json({
       status: false
@@ -68,7 +62,4 @@ router.get('/status', function(req, res) {
   res.status(200).json({
     status: true
   });
-});
-
-
-module.exports = router;
+};
