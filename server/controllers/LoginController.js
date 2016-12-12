@@ -1,6 +1,15 @@
 var passport = require('passport');
 var User = require('../models/User');
 
+exports.checkAuth = function (req, res, next) {
+    if (!req.isAuthenticated()) {
+        return res.status(401).json({
+          error: 'Not logged in'
+        });
+    }
+    next();
+};
+
 exports.register = function(req, res) {
   var user = { 
       username: req.body.username, 

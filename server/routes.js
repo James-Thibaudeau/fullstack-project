@@ -1,20 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var passport = require('passport');
 var LoginController = require('./controllers/LoginController');
 var UserController = require('./controllers/UserController');
 var AppointmentController = require('./controllers/AppointmentController');
-
 //Auth check middleware function
-var checkAuth = function (req, res, next) {
-    if (!req.isAuthenticated()) {
-        return res.status(401).json({
-          error: 'Not logged in'
-    });
-    }
-    next();
-
-};
+var checkAuth = LoginController.checkAuth;
 
 //Login routes
 router.route('/auth/register')
