@@ -7,7 +7,7 @@ class NavBar extends React.Component {
     render() {
         return (
 
-              <Navbar bsStyle="inverse">
+              <Navbar bsStyle="inverse" className="nav-bar">
                 <Navbar.Header>
                   <Navbar.Brand>
                     <Link to="/">FullStack Project</Link>

@@ -7,7 +7,8 @@ class Main extends React.Component {
         return (
             <div>
                 <NavBar />
-                <LoginBox />
+                <LoginBox type="Login" />
+                <LoginBox type="Register" />
 
             </div>
         );

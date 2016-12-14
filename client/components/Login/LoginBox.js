@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Checkbox, Col, ControlLabel, Form, FormControl, FormGroup, Panel } from 'react-bootstrap';
+import { Button, Col, ControlLabel, Form, FormControl, FormGroup, Panel } from 'react-bootstrap';
 
 class LoginBox extends React.Component {
     
@@ -20,13 +20,13 @@ class LoginBox extends React.Component {
         return (
             <div>
                 <Col xs={12} sm={6} md={4}>
-                    <Panel header={<h3>Login</h3>} bsStyle="primary">
+                    <Panel header={<h3>{this.props.type}</h3>} bsStyle="primary">
                         <Form horizontal>
-                            {this.renderFormGroup('Email')}
+                            {this.renderFormGroup('Username')}
                             {this.renderFormGroup('Password')}
                             <FormGroup>
                                 <Col sm={10}>
-                                    <Button bsStyle="primary" type="submit">Sign in</Button>
+                                    <Button bsStyle="primary" type="submit">{this.props.type}</Button>
                                 </Col>
                             </FormGroup>
                         </Form>

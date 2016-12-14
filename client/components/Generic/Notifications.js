@@ -12,7 +12,8 @@ class Notifications extends React.Component {
               fontSize: 15,
               bottom: 20,
               right: 25,
-              color: 'white'
+              color: '#6F0AAA'
+              
         };
             
         return (
