@@ -21,7 +21,7 @@ class NavBar extends React.Component {
   
   render() {
       return (
-        <Navbar collapseOnSelect fixedTop>
+        <Navbar fluid fixedTop>
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/">AppointMental</Link>

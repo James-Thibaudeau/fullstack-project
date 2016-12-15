@@ -6,18 +6,7 @@ import { Button, Col, Row,  ControlLabel, Form, FormControl, FormGroup, Panel } 
 class AppointmentCard extends React.Component {
     render() {
         return (
-           <Panel>
-                <Row>
-                    <Col xs={3}>
-                        Image
-                    </Col>
-                    <Col xs={3}>
-                        Appointment Name
-                    </Col>
-                    <Col xs={3}>
-                        Date
-                    </Col>
-                </Row>
+           <Panel header={this.props.header}>
            </Panel>
         );
     }
