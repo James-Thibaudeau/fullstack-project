@@ -38,6 +38,9 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//static files
+app.use('/static', express.static(path.join(__dirname, 'static')));
+
 //routes
 app.use('/api', require('./server/routes.js'));
 

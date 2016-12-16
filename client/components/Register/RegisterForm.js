@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Col, ControlLabel, Form, FormControl, FormGroup, Panel } from 'react-bootstrap';
 
-class LoginBox extends React.Component {
+class Register extends React.Component {
     
     renderFormGroup(type) {
         return (
@@ -18,23 +18,23 @@ class LoginBox extends React.Component {
     
     render() {
         return (
-            <div>
-                <Col xs={12} sm={6} md={4}>
-                    <Panel header={<h3>{this.props.type}</h3>} bsStyle="primary">
+
+                <Col xs={12} md={6} mdOffset={3} lg={6} lgOffset={3}>
+                    <Panel header={<h3>{this.props.type}</h3>} bsStyle="default">
                         <Form horizontal>
                             {this.renderFormGroup('Username')}
                             {this.renderFormGroup('Password')}
                             <FormGroup>
-                                <Col sm={10}>
+                                <Col smOffset={2} sm={10}>
                                     <Button bsStyle="primary" type="submit">{this.props.type}</Button>
                                 </Col>
                             </FormGroup>
                         </Form>
                     </Panel>
                 </Col>
-            </div>
+
         );
     }
 };
 
-export default LoginBox;
+export default Register;
