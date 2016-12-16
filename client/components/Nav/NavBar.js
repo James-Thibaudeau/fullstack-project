@@ -13,7 +13,7 @@ class NavBar extends React.Component {
                     <FormControl type="text" placeholder="User Name" />
                     <FormControl type="text" placeholder="Password" /> 
                   </FormGroup>
-                  <Button type="submit">Login</Button>
+                  <Button bsStyle="primary" type="submit">Login</Button>
             </Navbar.Form>
           </Navbar.Collapse>
       );
@@ -21,7 +21,7 @@ class NavBar extends React.Component {
   
   render() {
       return (
-        <Navbar fluid fixedTop>
+        <Navbar fluid fixedTop inverse>
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/">AppointMental</Link>

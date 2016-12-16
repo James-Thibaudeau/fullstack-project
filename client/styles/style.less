@@ -1,16 +1,20 @@
 @import "variables.less";
 
+body {
+    background-color: @primary-lightest;
+}
+
 #page-wrapper {
     padding: 60px 15px;
     min-height: 568px;
-    background-color: white;
+    background-color: @primary-lightest;
 }
 
 #welcome {
     background-image: url('../../static/appointmentImage.png');
 
     div {
-        color: white;
+        color: @secondary-normal;
         background-color: rgba(0,0,0,0.3);
         padding-bottom: 25px;
         text-align: center;

@@ -14,8 +14,6 @@ class Main extends React.Component {
                 <div className="container-fluid">
                     <div id="page-wrapper" style={{height:$(window).height()}}>
                         <Welcome />
-                        <AppointmentList />
-                        <AppointmentDetail />
                     </div>
                 </div>
             </div>
