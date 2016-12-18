@@ -1,9 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { Button, Col, ControlLabel, Form, FormControl, FormGroup, Image, Jumbotron, Panel } from 'react-bootstrap';
+import {Jumbotron } from 'react-bootstrap';
 import Register from '../Register/RegisterForm';
-
-
 
 class Welcome extends React.Component {
     render() {
@@ -17,7 +14,7 @@ class Welcome extends React.Component {
                     </div>
                 </Jumbotron>
                 <div className="container">
-                    <Register type="Register" />
+                    <Register type="Register" submit={this.props.submit} />
                 </div>
             </div>
 
