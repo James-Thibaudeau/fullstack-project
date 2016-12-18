@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Col, ControlLabel, Form, FormControl, FormGroup, Panel } from 'react-bootstrap';
 
-
 class Register extends React.Component {
     
     constructor() {
@@ -16,6 +15,7 @@ class Register extends React.Component {
     submit(e) {
         e.preventDefault();
         console.log('submitting');
+        this.props.submit(this.state.username, this.state.password);
     }
     
     setUsername(e) {
