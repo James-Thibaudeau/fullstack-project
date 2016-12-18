@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { connect } from 'react-redux';
 import NavBar from './Nav/NavBar';
 import Welcome from './Main/Welcome';
 
@@ -20,9 +20,12 @@ class Main extends React.Component {
                     </div>
                 </div>
             </div>
-
         );
     }
 };
 
-export default Main;
+function mapStateToProps(state) {
+    return {};
+};
+
+export const MainContainer = connect(mapStateToProps)(Main);

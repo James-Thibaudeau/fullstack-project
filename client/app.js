@@ -5,7 +5,7 @@ import 'bootstrap/less/bootstrap.less';
 import 'font-awesome/less/font-awesome.less';
 import './styles/style.less';
 // Import Components
-import Index from './components/Index';
+import { MainContainer } from './components/Main';
 
 // import react router deps
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -15,7 +15,7 @@ import store, { history } from './store';
 const router = (
     <Provider store={store}>
         <Router history={history}>
-            <Route path="/" component={Index}>
+            <Route path="/" component={MainContainer}>
             </Route>
         </Router>
     </Provider>
