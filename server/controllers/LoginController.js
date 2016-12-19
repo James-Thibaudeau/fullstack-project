@@ -20,7 +20,7 @@ exports.register = function(req, res) {
   User.register(new User(user),
     req.body.password, function(err, account) {
     if (err) {
-      return res.status(500).json({
+      return res.status(403).json({
         err: err
       });
     }
