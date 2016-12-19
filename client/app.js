@@ -20,9 +20,9 @@ const router = (
         <Router history={history}>
             <Route path="/" component={App}>
                 <IndexRoute component={MainContainer} />
-                <Route path="main" component={MainContainer} onEnter={onEnterRoute}>
+                <Route path="/main" component={MainContainer} onEnter={onEnterRoute}>
                     <IndexRoute component={MainContainer} onEnter={onEnterRoute} />
-                    <Route path="/profile" component={ProfileContainer} onEnter={onEnterRoute} />
+                    <Route path="profile" component={ProfileContainer} onEnter={onEnterRoute}/>
                 </Route>
             </Route>
         </Router>
@@ -33,7 +33,9 @@ function onEnterRoute(nextState, replace) {
     console.log('Routing to: ' + nextState.location.pathname);
 
     var state = store.getState();
-    if(!state.login.isLoggedIn) {
+    console.log(state.login);
+    if(!state.isLoggedIn) {
+        console.log('not loggedin');
         replace({
             pathname: '/',
             state: { redirectTo: nextState.location.pathname }
