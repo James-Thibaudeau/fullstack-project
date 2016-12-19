@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {Jumbotron } from 'react-bootstrap';
 import Register from '../Register/RegisterForm';
+import { registerHandler, register } from '../../actions/RegisterActions';
 
 class Welcome extends React.Component {
     render() {
@@ -14,7 +16,7 @@ class Welcome extends React.Component {
                     </div>
                 </Jumbotron>
                 <div className="container">
-                    <Register type="Register" submit={this.props.submit} />
+                    <Register type="Register" submit={this.props.registerHandler} />
                 </div>
             </div>
 
@@ -22,4 +24,8 @@ class Welcome extends React.Component {
     }
 };
 
-export default Welcome;
+function mapStateToProps(state) {
+    return {};
+};
+
+export const WelcomeContainer = connect(mapStateToProps, {registerHandler})(Welcome);

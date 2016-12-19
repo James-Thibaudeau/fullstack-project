@@ -19,6 +19,7 @@ export function loginHandler(username, password) {
             password
           })
             .then(response => {
+                console.log('login successful');
                 axios.get('https://fullstack-project-jamesthibaudeau.c9users.io/api/users/'+username)
                     .then(response => {
                         return dispatch({
