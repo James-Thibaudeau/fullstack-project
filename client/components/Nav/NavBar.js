@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { LinkContainer } from 'react-router-bootstrap';
 import {MenuItem, Nav, NavItem, NavDropdown, Navbar, FormGroup, FormControl, Button} from 'react-bootstrap';
 
 
@@ -34,6 +35,10 @@ class NavBar extends React.Component {
 
     }
     
+    logout() {
+      this.props.logoutHandler();
+    }
+    
     renderSwitch() {
       if(this.props.isLoggedIn) {
         return this.renderNavOptions();
@@ -62,9 +67,11 @@ class NavBar extends React.Component {
                 <NavItem eventKey={1} href="#">Make an Appointment</NavItem>
                 <NavItem eventKey={2} href="#">Appointments</NavItem>
                 <NavDropdown eventKey={3} title="Settings" id="basic-nav-dropdown">
+                <LinkContainer to="/profile">
                   <MenuItem eventKey={3.1}>Profile</MenuItem>
+                </LinkContainer>
                   <MenuItem divider />
-                  <MenuItem eventKey={3.2}>Logout</MenuItem>
+                  <MenuItem eventKey={3.2} onClick={this.logout.bind(this)}>Logout</MenuItem>
                 </NavDropdown>
               </Nav>
             </Navbar.Collapse>

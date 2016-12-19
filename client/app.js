@@ -22,7 +22,7 @@ const router = (
                 <IndexRoute component={MainContainer} />
                 <Route path="/main" component={MainContainer} onEnter={onEnterRoute}>
                     <IndexRoute component={MainContainer} onEnter={onEnterRoute} />
-                    <Route path="profile" component={ProfileContainer} onEnter={onEnterRoute}/>
+                    <Route path="/profile" component={ProfileContainer} onEnter={onEnterRoute}/>
                 </Route>
             </Route>
         </Router>
