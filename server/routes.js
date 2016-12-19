@@ -27,7 +27,7 @@ router.route('/users')
 //     .get(UserController.getUserById)
 //     .delete(checkAuth, UserController.removeUser);
 
-router.route('/user/:username')
+router.route('/users/:username')
     .get(UserController.getUserByUserName);
     
 //Appointment routes

@@ -18,7 +18,8 @@ exports.getUserById = function(req, res) {
 };
 
 exports.getUserByUserName = function(req, res) {
-    User.findOne({username: req.params.username}, function(err, user) {
+    var username = {username: req.params.username};
+    User.findOne(username, function(err, user) {
         if(err)
             return res.send(err);
         res.json(user);

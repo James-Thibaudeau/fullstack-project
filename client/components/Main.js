@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import NavBar from './Nav/NavBar';
 import Welcome from './Main/Welcome';
 import { registerHandler, register } from '../actions/RegisterActions';
+import { loginHandler } from '../actions/LoginActions';
 
 
 class Main extends React.Component {
@@ -19,7 +20,7 @@ class Main extends React.Component {
                <NavBar />
                 <div className="container-fluid">
                     <div id="page-wrapper" style={{height:$(window).height()}}>
-                        <Welcome submit={this.props.registerHandler}/>
+                        <Welcome submit={this.props.loginHandler}/>
                     </div>
                 </div>
             </div>
@@ -31,4 +32,4 @@ function mapStateToProps(state) {
     return {};
 };
 
-export const MainContainer = connect(mapStateToProps, {registerHandler})(Main);
+export const MainContainer = connect(mapStateToProps, {registerHandler, loginHandler})(Main);
