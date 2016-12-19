@@ -21,11 +21,14 @@ router.route('/auth/status')
 
 //User routes
 router.route('/users')
-    .get(checkAuth, UserController.getUsers);
+    .get(UserController.getUsers);
 
-router.route('/users/:user_id')
-    .get(checkAuth, UserController.getUserById)
-    .delete(checkAuth, UserController.removeUser);
+// router.route('/users/:user_id')
+//     .get(UserController.getUserById)
+//     .delete(checkAuth, UserController.removeUser);
+
+router.route('/user/:username')
+    .get(UserController.getUserByUserName);
     
 //Appointment routes
 router.route('/appointments')

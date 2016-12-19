@@ -17,6 +17,14 @@ exports.getUserById = function(req, res) {
     });
 };
 
+exports.getUserByUserName = function(req, res) {
+    User.findOne({username: req.params.username}, function(err, user) {
+        if(err)
+            return res.send(err);
+        res.json(user);
+    });
+};
+
 exports.removeUser = function (req, res) {
     User.remove({
         _id: req.params.user_id
