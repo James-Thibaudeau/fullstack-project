@@ -31,14 +31,13 @@ const router = (
 
 function onEnterRoute(nextState, replace) {
     console.log('Routing to: ' + nextState.location.pathname);
-
     var state = store.getState();
-    console.log(state.login);
-    if(!state.isLoggedIn) {
+
+    if(!state.login.isLoggedIn) {
         console.log('not loggedin');
         replace({
             pathname: '/',
-            state: { redirectTo: nextState.location.pathname }
+            state: { ...state, redirectTo: nextState.location.pathname }
         });
     }
 
