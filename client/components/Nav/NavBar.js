@@ -65,7 +65,9 @@ class NavBar extends React.Component {
             <Navbar.Collapse>
               <Nav pullRight>
                 <NavItem eventKey={1} href="#">Make an Appointment</NavItem>
-                <NavItem eventKey={2} href="#">Appointments</NavItem>
+                <LinkContainer to="/appointments">
+                  <NavItem eventKey={2}>Appointments</NavItem>
+                </LinkContainer>
                 <NavDropdown eventKey={3} title="Settings" id="basic-nav-dropdown">
                 <LinkContainer to="/profile">
                   <MenuItem eventKey={3.1}>Profile</MenuItem>
