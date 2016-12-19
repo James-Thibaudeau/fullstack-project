@@ -10,11 +10,10 @@ class Main extends React.Component {
     render() {
         return (
             <div>
-               <NavBar submit={this.props.loginHandler} />
+               <NavBar submit={this.props.loginHandler} isLoggedIn={this.props.isLoggedIn} />
                 <div className="container-fluid">
                     <div id="page-wrapper" style={{height:$(window).height()}}>
                         {this.props.children || <WelcomeContainer />}
-                        <Link to="/main/profile">PROFILE</Link>
                     </div>
                 </div>
             </div>
@@ -23,7 +22,9 @@ class Main extends React.Component {
 };
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        isLoggedIn: state.login.isLoggedIn
+    };
 };
 
 export const MainContainer = connect(mapStateToProps, {loginHandler})(Main);
