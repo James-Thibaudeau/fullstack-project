@@ -17,6 +17,14 @@ var UserSchema = new Schema({
   },
   lastName: {
       type: String
+  },
+  email: {
+    type: String
+  },
+  created_at: {
+    type: Date,
+    required: true,
+    default: Date.now
   }
 
 });
