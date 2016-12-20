@@ -1,5 +1,8 @@
 //login actions
 import axios from 'axios';
+import store from '../store.js';
+//importing push and browserHistory doesn't sit well but it works
+import { browserHistory } from 'react-router';
 const APIURL = 'https://fullstack-project-jamesthibaudeau.c9users.io/api/';
 
 export const LOGIN = 'LOGIN';
@@ -28,7 +31,8 @@ export function logout() {
             type:LOGOUT,
             user: {},
             isLoggedIn: false,
-            message: 'logged out successfully'
+            message: 'logged out successfully',
+            redirectTo: '/'
     };
 }
 
@@ -51,7 +55,8 @@ export function loginHandler(username, password) {
                 console.log('login successful');
                 axios.get(APIURL+'users/'+username)
                     .then(response => {
-                        return dispatch(login(response));
+                        dispatch(login(response));
+                        browserHistory.push('/appointments');
                     }).catch(error => {
                         return dispatch(loginFail());
                     });
@@ -67,7 +72,9 @@ export function logoutHandler() {
       console.log('Logging out from server');
       axios.get(APIURL+'/auth/logout')
       .then(response => {
-          return dispatch(logout());
+          dispatch(logout());
+          //this doesn't sit well with me
+          browserHistory.push('/');
       })
       .catch(error => {
           return dispatch(logoutFail());

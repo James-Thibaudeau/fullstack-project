@@ -7,9 +7,9 @@ import './styles/style.less';
 // Import Components
 import { App } from './components/App';
 import { MainContainer } from './components/Main';
-import {WelcomeContainer} from './components/Main/Welcome';
 import {ProfileContainer} from './components/Profile/Profile';
 import {AppointmentContainer} from './components/Appointments/Appointment';
+import {AppointmentFormContainer} from './components/Appointments/AppointmentForm';
 
 // import react router deps
 import { Router, Route, IndexRoute} from 'react-router';
@@ -25,6 +25,7 @@ const router = (
                     <IndexRoute component={MainContainer} onEnter={onEnterRoute} />
                     <Route path="/profile" component={ProfileContainer} onEnter={onEnterRoute}/>
                     <Route path="/appointments" component={AppointmentContainer} onEnter={onEnterRoute}/>
+                    <Route path="/appointform" component={AppointmentFormContainer} onEnter={onEnterRoute}/>
                 </Route>
             </Route>
         </Router>
