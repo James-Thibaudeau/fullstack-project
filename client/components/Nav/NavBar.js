@@ -49,13 +49,15 @@ class NavBar extends React.Component {
     renderLogin() {
       return (
         <Navbar.Collapse>
-              <Navbar.Form pullRight onSubmit={this.submit.bind(this)}>
+              <form className='navbar-form pull-right' onSubmit={this.submit.bind(this)}>
                     <FormGroup>
                       <FormControl type="text" placeholder="User Name" onChange={this.setUsername.bind(this)} />
+                      {' '}
                       <FormControl type="password" placeholder="Password" onChange={this.setPassword.bind(this)}/> 
+                      {' '}
+                      <Button bsStyle="primary" type="submit" >Login</Button>
                     </FormGroup>
-                    <Button bsStyle="primary" type="submit" onClick={this.submit.bind(this)}>Login</Button>
-              </Navbar.Form>
+              </form>
             </Navbar.Collapse>
         );
     }
@@ -64,7 +66,9 @@ class NavBar extends React.Component {
       return (
             <Navbar.Collapse>
               <Nav pullRight>
-                <NavItem eventKey={1} href="#">Make an Appointment</NavItem>
+              <LinkContainer to="/appointform">
+                <NavItem eventKey={1}>Make an Appointment</NavItem>
+              </LinkContainer>
                 <LinkContainer to="/appointments">
                   <NavItem eventKey={2}>Appointments</NavItem>
                 </LinkContainer>
