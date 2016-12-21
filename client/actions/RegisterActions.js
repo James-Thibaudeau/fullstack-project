@@ -1,5 +1,6 @@
 //Registration actions
 import axios from 'axios';
+import { loginHandler } from './LoginActions';
 
 export const REGISTER = 'REGISTER';
 export function register() {
@@ -18,21 +19,23 @@ export function registerHandler(username, password) {
             username,
             password
           })
-          .then(response => {
-            console.log(response);
-                return dispatch({
+        .then(response => {
+            console.log('registration successful');
+            console.log('logging in...');
+            dispatch(loginHandler(username, password));
+            return dispatch({
                     type: REGISTER,
                     registered: true,
                     message: 'user created'
-                });
-          })
-          .catch(error => {
+            });
+        })
+        .catch(error => {
             console.log(error);
-                return dispatch({
-                    type: REGISTER,
-                    registered: false,
-                    message: 'user already exists'
-                });
-          });
+            return dispatch({
+                type: REGISTER,
+                registered: false,
+                message: 'user already exists'
+            });
+        });
 };
 }

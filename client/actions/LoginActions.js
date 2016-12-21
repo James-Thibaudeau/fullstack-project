@@ -1,6 +1,5 @@
 //login actions
 import axios from 'axios';
-import store from '../store.js';
 //importing push and browserHistory doesn't sit well but it works
 import { browserHistory } from 'react-router';
 const APIURL = 'https://fullstack-project-jamesthibaudeau.c9users.io/api/';
