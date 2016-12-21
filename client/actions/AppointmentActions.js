@@ -23,7 +23,8 @@ export const GET_APPOINTMENTS = 'GET_APPOINTMENTS';
 export function getAppointments(appointments) {
     return {
             type:GET_APPOINTMENTS,
-            appointments
+            appointments,
+            message: 'appointments fetched'
     };
 }
 

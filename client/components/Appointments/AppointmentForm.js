@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {ControlLabel, Col, Row, Panel, Form, FormGroup, FormControl, Button} from 'react-bootstrap';
 import DatePicker from 'react-bootstrap-date-picker';
 import TimePicker from 'react-bootstrap-time-picker';
+import { createAppoinHandler } from '../../actions/AppointmentActions';
 
 class AppointmentForm extends React.Component {
     
@@ -21,7 +22,24 @@ class AppointmentForm extends React.Component {
     
     submit(e) {
         e.preventDefault();
+        //form validation should go here
         console.log('submitting');
+        let appointment = {
+                name: this.state.name,
+                creatorId: this.props.login.user._id,
+                location: {
+                      locationName: this.state.locationName,
+                      address: this.state.address,
+                      city: this.state.city,
+                      country: this.state.country
+                  },
+                  date: {
+                      startDate: this.state.startDate,
+                      endDate: this.state.endDate
+                  }
+        };
+        console.log(appointment);
+        this.props.submit(appointment);
     }
     
     setValue(e) {
@@ -138,7 +156,7 @@ class AppointmentForm extends React.Component {
         return (
             <div className="container-fluid">
                 <Panel>
-                    <Form>
+                    <Form onSubmit={this.submit.bind(this)}>
                     <Row>
                     <Col xs={12}>
                         <h1>Make an Appointment{' '}<Button bsStyle="success" bsSize="large" type="submit">Create</Button></h1>
@@ -176,4 +194,4 @@ function mapStateToProps(state) {
     return {...state};
 };
 
-export const AppointmentFormContainer = connect(mapStateToProps)(AppointmentForm);
+export const AppointmentFormContainer = connect(mapStateToProps, { submit: createAppoinHandler })(AppointmentForm);
