@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Button, Col, Row,  ControlLabel, Form, FormControl, FormGroup, Panel, PanelGroup } from 'react-bootstrap';
-import AppointmentCard from './AppointmentCard'
+import AppointmentCard from './AppointmentCard';
+import AppointmentDetail from './AppointmentDetail';
 
 
 class AppointmentList extends React.Component {
@@ -21,13 +22,14 @@ class AppointmentList extends React.Component {
     render() {
         return (
             <div className="container-fluid">
-                <Col xs={6} xsOffset={3}>
+                <Col xs={12}>
 
                         <AppointmentCard header="Appointment 1" />
                         <AppointmentCard header="Appointment 2" />
                         <AppointmentCard header="Appointment 3" />
                         <AppointmentCard header="Appointment 4" />
                         <AppointmentCard header="Appointment 5" />
+                        <AppointmentDetail />
     
                 </Col>
             </div>

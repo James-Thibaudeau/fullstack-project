@@ -7,11 +7,12 @@ class AppointmentDetail extends React.Component {
     
     renderRow(header, content) {
         return (
-            <Row style={{padding: '2px'}}>
-                <Col xs={2}>
+            <Row>
+                <Col xs={12} sm={2}>
                     {header}
+                    <hr />
                 </Col>
-                <Col xs={10}>
+                <Col xs={12} sm={10}>
                     {content}
                 </Col>
             </Row>
@@ -20,26 +21,78 @@ class AppointmentDetail extends React.Component {
     
     render() {
         return (
-           <Panel>
+           <Panel collapsible header="Appointment">
                 <div>
                     <h3>Appointment</h3>
                     <hr></hr>
                 </div>
                 <div>
-                    <Col xs={6}>
+                    <Col xs={12}>
                         <div>
-                            <h5>Details</h5>
-                            <hr></hr>
-                            {this.renderRow('When:', '1 January 5:00pm')}
-                            {this.renderRow('Where:', '123 Fake Street')}
-                            <hr></hr>
+                            <Row>
+                                <h5>Details</h5>
+                                <hr />
+                            </Row>
+                            <Row>
+                            <Col xs={12} sm={6}>
+                                <Row>
+                                    <Col xs={12}>
+                                        When
+                                        <hr />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={6}>
+                                        <Row>
+                                            <Col xs={12}>
+                                                Start: April 1st 2016 9:00pm
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col xs={12}>
+                                                End: April 1st 2016 11:59pm
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                </Row>
+                                <hr />
+                                </Col>
+                            <Col xs={12} sm={6}>
+                                <Row>
+                                    <Col xs={12}>
+                                        Where
+                                        <hr />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={12}>
+                                        <Row>
+                                            <Col xs={6}>
+                                                Algonquin College
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col xs={6}>
+                                                123 Fake Street
+                                                <br />
+                                                Ottawa
+                                                <br />
+                                                Canada
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                </Row>
+                                <hr />
+                                </Col>
+                            </Row>
                             {this.renderRow('Descripion:', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer imperdiet rutrum lectus, nec molestie urna suscipit vel. Pellentesque at risus vestibulum, mattis nisl sed, aliquet nisl. Morbi risus metus, luctus nec pretium rhoncus, mollis ut justo. Quisque ac tortor in lectus tempor dignissim. Aenean vel tellus malesuada, condimentum est non, lacinia justo. Quisque egestas luctus arcu at efficitur. Curabitur fermentum dignissim massa, nec vulputate augue euismod vitae. Nam ut ullamcorper lorem. Vivamus elementum urna in magna tempor malesuada. Fusce eget elementum dui, et ullamcorper dui. Proin in eros arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.')}
                         </div>
+                        <hr />
                     </Col>
                     <Col xs={6}>
                         <div>
                             <h5>Guests</h5>
-                            <hr></hr>
+                            <hr />
                         </div>
                     </Col>
                 </div>
