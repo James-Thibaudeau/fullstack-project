@@ -27,7 +27,7 @@ exports.newAppointment = function (req, res) {
 };
 
 exports.getAppointmentById =  function(req, res) {
-    Appointment.findById(req.params.appointment_id, function(err, appointment) {
+    Appointment.find({creatorId: req.params.creatorId}, function(err, appointment) {
         if (err)
             return res.send(err);
         res.json(appointment);

@@ -35,7 +35,7 @@ router.route('/appointments')
     .post(checkAuth, AppointmentController.newAppointment)
     .get(checkAuth, AppointmentController.getAppointments);
 
-router.route('/appointments/:appointment_id')
+router.route('/appointments/:creatorId')
     .get(checkAuth, AppointmentController.getAppointmentById)
     .delete(checkAuth, AppointmentController.removeAppointment);
 
