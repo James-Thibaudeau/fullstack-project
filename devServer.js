@@ -44,8 +44,8 @@ app.use('/static', express.static(path.join(__dirname, 'static')));
 //routes
 app.use('/api', require('./server/routes.js'));
 
-
-app.get('/', function(req, res) {
+//route is * to handle browser refresh, when I find a better way this will change
+app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
