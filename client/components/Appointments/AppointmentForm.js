@@ -8,7 +8,14 @@ class AppointmentForm extends React.Component {
     
     constructor() {
         super();
+        let date = new Date();
+        let initdate = (date.toISOString().substring(0,11) + '00:00:00.000Z');
+        
         this.state = {
+            startDate: initdate,
+            endDate: initdate,
+            startTime: 0,
+            endTime: 0
         };
     }
     
@@ -17,24 +24,68 @@ class AppointmentForm extends React.Component {
         console.log('submitting');
     }
     
-    setText(e) {
+    setValue(e) {
         this.setState({
             [e.target.id]: e.target.value
         });
     }
     
-    setUsername(e) {
+    //these handle date/time functions are not ideal, but the library I used
+    //has them setup this way, eventually could use a refactor from 4 functions
+    //down to two
+    handleStartTime(time) {
+        let formatted = new Date(null);
+        formatted.setSeconds(time);
+        console.log(formatted.toISOString().substring(11));
+        
+        let newTime = formatted.toISOString().substring(11);
+        let oldDate = this.state.startDate.substr(0, 11);
+        
         this.setState({
-            username: e.target.value,
+            startDate : (oldDate + newTime),
+            startTime: time
         });
-
+        
     }
-
-    setPassword(e) {
+    
+    handleEndTime(time) {
+        let formatted = new Date(null);
+        formatted.setSeconds(time);
+        console.log(formatted.toISOString().substring(11));
+        
+        let newTime = formatted.toISOString().substring(11);
+        let oldDate = this.state.startDate.substr(0, 11);
+        
         this.setState({
-            password: e.target.value,
+            endDate : (oldDate + newTime),
+            endTime : time
         });
-
+        
+    }
+    
+    handleStartDate(startDate) {
+        let formatted = new Date(null);
+        formatted.setSeconds(this.state.startTime);
+        console.log(formatted.toISOString().substring(11));
+        
+        let oldTime = formatted.toISOString().substring(11);
+        let newDate = startDate.substr(0, 11);
+        
+        this.setState({
+            startDate: (newDate + oldTime)
+        });
+    }
+    
+    handleEndDate(endDate) {
+        let formatted = new Date(null);
+        formatted.setSeconds(this.state.startTime);
+        
+        let oldTime = formatted.toISOString().substring(11);
+        let newDate = endDate.substr(0, 11);
+    
+        this.setState({
+            endDate: (newDate + oldTime)
+        });
     }
     
     renderGroup(id, title, type, func){
@@ -52,25 +103,31 @@ class AppointmentForm extends React.Component {
                 <Col xs={12} sm={3}>
                     <FormGroup>
                         <ControlLabel>Start Date</ControlLabel>
-                        <DatePicker id="date" showClearButton={false}/>
+                        <DatePicker id="startDate" 
+                                    showClearButton={false} 
+                                    onChange={this.handleStartDate.bind(this)} 
+                                    value={this.state.startDate} />
                     </FormGroup>
                 </Col>
                 <Col xs={12} sm={3}>
                     <FormGroup>
                         <ControlLabel>Start Time</ControlLabel>
-                        <TimePicker />
+                        <TimePicker id="startTime" onChange={this.handleStartTime.bind(this)} value={this.state.startTime} />
                     </FormGroup>
                 </Col>
                 <Col xs={12} sm={3}>
                     <FormGroup>
                         <ControlLabel>End Date</ControlLabel>
-                        <DatePicker id="date" showClearButton={false}/>
+                        <DatePicker id="endDate" 
+                                    showClearButton={false} 
+                                    onChange={this.handleEndDate.bind(this)} 
+                                    value={this.state.endDate} />
                     </FormGroup>
                 </Col>
                 <Col xs={12} sm={3}>
                     <FormGroup>
                         <ControlLabel>End Time</ControlLabel>
-                        <TimePicker />
+                        <TimePicker id="endTime" onChange={this.handleEndTime.bind(this)} value={this.state.endTime}/>
                     </FormGroup>
                 </Col>
             </Row>
@@ -90,21 +147,21 @@ class AppointmentForm extends React.Component {
                     </Row>
                         <Row>
                             <Col xs={12} sm={6}>
-                                {this.renderGroup('name', 'Appointment Name', 'text', this.setText.bind(this))}
+                                {this.renderGroup('name', 'Appointment Name', 'text', this.setValue.bind(this))}
                             </Col>
                             <Col xs={12} sm={6}>
-                                {this.renderGroup('locationName', 'Location Name', 'text', this.setText.bind(this))}
+                                {this.renderGroup('locationName', 'Location Name', 'text', this.setValue.bind(this))}
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12} sm={4}>
-                                {this.renderGroup('address', 'Address', 'text', this.setText.bind(this))}
+                                {this.renderGroup('address', 'Address', 'text', this.setValue.bind(this))}
                             </Col>
                             <Col xs={12} sm={4}>
-                                {this.renderGroup('city', 'City', 'text', this.setText.bind(this))}
+                                {this.renderGroup('city', 'City', 'text', this.setValue.bind(this))}
                             </Col>
                             <Col xs={12} sm={4}>
-                                {this.renderGroup('country', 'Country', 'text', this.setText.bind(this))}
+                                {this.renderGroup('country', 'Country', 'text', this.setValue.bind(this))}
                             </Col>
                         </Row>
                         {this.renderDateTime()}
