@@ -4,7 +4,6 @@ import { loginHandler } from './LoginActions';
 
 export const REGISTER = 'REGISTER';
 export function register() {
-    console.log('action fired');
     return {
         type: REGISTER,
         registered: true
