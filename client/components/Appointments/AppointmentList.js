@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Button, Col, Row,  ControlLabel, Form, FormControl, FormGroup, Panel, PanelGroup } from 'react-bootstrap';
 import AppointmentCard from './AppointmentCard';
-import AppointmentDetail from './AppointmentDetail';
 
 
 class AppointmentList extends React.Component {
@@ -29,8 +28,7 @@ class AppointmentList extends React.Component {
                         <AppointmentCard header="Appointment 3" />
                         <AppointmentCard header="Appointment 4" />
                         <AppointmentCard header="Appointment 5" />
-                        <AppointmentDetail />
-    
+
                 </Col>
             </div>
         );

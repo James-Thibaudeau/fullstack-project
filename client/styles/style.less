@@ -1,13 +1,13 @@
 @import "variables.less";
 
 body {
-    background-color: @primary-lightest;
+    background-color: @primary-normal;
 }
 
 #page-wrapper {
     padding: 60px 15px;
     min-height: 568px;
-    background-color: @primary-lightest;
+    background-color: @primary-normal;
 }
 
 #welcome {
@@ -20,3 +20,11 @@ body {
         text-align: center;
     }
 }
+
+.green-panel {
+    border-color: @secondary-light;
+    > .panel-heading {
+        background-color: @secondary-light;
+    }
+}
+
