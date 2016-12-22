@@ -51,6 +51,7 @@ export function createAppoinHandler(appointment) {
         axios.post(APIURL+'/appointments', appointment)
         .then(response => {
             console.log('appointment booked successfully');
+            console.log(response.data);
             dispatch(createAppointment());
             
         })

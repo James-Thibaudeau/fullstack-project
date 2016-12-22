@@ -1,9 +1,14 @@
 import React from 'react';
+import moment from 'moment';
 import { Link } from 'react-router';
 import { Col, Panel, Row } from 'react-bootstrap';
 
 
 class AppointmentCard extends React.Component {
+    
+    dateFormat(ISOdate){
+        return moment.parseZone(ISOdate).format('dddd MMMM Do YYYY, hh:mm a');
+    }
     
     renderRow(header, content) {
         return (
@@ -37,12 +42,12 @@ class AppointmentCard extends React.Component {
                                     <Col xs={12}>
                                         <Row>
                                             <Col xs={12}>
-                                                Start: April 1st 2016 9:00pm
+                                                Start: {this.dateFormat(this.props.date.startDate)}
                                             </Col>
                                         </Row>
                                         <Row>
                                             <Col xs={12}>
-                                                End: April 1st 2016 11:59pm
+                                                End: {this.dateFormat(this.props.date.endDate)}
                                             </Col>
                                         </Row>
                                     </Col>
@@ -59,16 +64,16 @@ class AppointmentCard extends React.Component {
                                     <Col xs={12}>
                                         <Row>
                                             <Col xs={6}>
-                                                Algonquin College
+                                                {/*this.props.location.country || 'none'*/}
                                             </Col>
                                         </Row>
                                         <Row>
                                             <Col xs={6}>
-                                                123 Fake Street
+                                                {/*this.props.location.address || 'none'*/}
                                                 <br />
-                                                Ottawa
+                                                {/*this.props.location.city || 'none'*/}
                                                 <br />
-                                                Canada
+                                                {/*this.props.location.country || 'none'*/}
                                             </Col>
                                         </Row>
                                     </Col>

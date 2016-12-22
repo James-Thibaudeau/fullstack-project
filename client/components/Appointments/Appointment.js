@@ -18,17 +18,13 @@ class Appointment extends React.Component {
         this.getAppointments();
     }
     
-    renderList() {
-        return <AppointmentList />;
-    }
-    
     render() {
         return (
             <div className="container">
                 <Panel>
                     <h1>Appointments</h1>
                     <hr />
-                    {this.renderList()}
+                    <AppointmentList {...this.props.appointments } />
                 </Panel>
             </div>
         );

@@ -36,7 +36,8 @@ class AppointmentForm extends React.Component {
                   date: {
                       startDate: this.state.startDate,
                       endDate: this.state.endDate
-                  }
+                  },
+                  guests: this.state.guests
         };
         console.log(appointment);
         this.props.submit(appointment);
@@ -82,6 +83,7 @@ class AppointmentForm extends React.Component {
     }
     
     handleStartDate(startDate) {
+        console.log('start date: ' + startDate);
         let formatted = new Date(null);
         formatted.setSeconds(this.state.startTime);
         console.log(formatted.toISOString().substring(11));
@@ -183,6 +185,11 @@ class AppointmentForm extends React.Component {
                             </Col>
                         </Row>
                         {this.renderDateTime()}
+                        <Row>
+                            <Col xs={12} sm={4}>
+                                {this.renderGroup('guests', 'Guests', 'text', this.setValue.bind(this))}
+                            </Col>
+                        </Row>
                     </Form>
                 </Panel>
             </div>
