@@ -43,7 +43,6 @@ function onEnterRoute(nextState, replace) {
             state: { ...state, redirectTo: nextState.location.pathname }
         });
     }
-
 }
 
 render(router, document.getElementById('root'));

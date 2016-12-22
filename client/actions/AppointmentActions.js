@@ -19,6 +19,14 @@ export function createAppoinFail() {
     };
 }
 
+export const FETCH_APPOINTMENTS = 'FETCH_APPOINTMENTS';
+export function fetchAppointments() {
+    return {
+            type:FETCH_APPOINTMENTS,
+            message: 'appointments fetching'
+    };
+}
+
 export const GET_APPOINTMENTS = 'GET_APPOINTMENTS';
 export function getAppointments(appointments) {
     return {
@@ -56,7 +64,7 @@ export function createAppoinHandler(appointment) {
 export function getAppointmentHandler(userid) {
     return dispatch => {
       console.log('getting appointments...');
-      axios.get(APIURL+'/appointments/:creatorId')
+      axios.get(APIURL+'/appointments/'+userid)
       .then(response => {
           dispatch(getAppointments(response.data));
       })
