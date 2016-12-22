@@ -18,6 +18,7 @@ class AppointmentList extends React.Component {
                 })
             );
         }
+        return 'No appointments yet';
     }
 
 

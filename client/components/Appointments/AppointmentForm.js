@@ -37,7 +37,8 @@ class AppointmentForm extends React.Component {
                       startDate: this.state.startDate,
                       endDate: this.state.endDate
                   },
-                  guests: this.state.guests
+                  guests: this.state.guests,
+                  description: this.state.description
         };
         console.log(appointment);
         this.props.submit(appointment);
@@ -109,6 +110,14 @@ class AppointmentForm extends React.Component {
     }
     
     renderGroup(id, title, type, func){
+        if (type == 'textarea'){
+            return (
+            <FormGroup>
+                <ControlLabel>{title}</ControlLabel>
+                <FormControl id={id} componentClass={type} placeholder={title} onChange={func} />
+            </FormGroup>
+                );
+        }
         return (
             <FormGroup>
                 <ControlLabel>{title}</ControlLabel>
@@ -188,6 +197,9 @@ class AppointmentForm extends React.Component {
                         <Row>
                             <Col xs={12} sm={4}>
                                 {this.renderGroup('guests', 'Guests', 'text', this.setValue.bind(this))}
+                            </Col>
+                            <Col xs={12} sm={8}>
+                                {this.renderGroup('description', 'Descripion', 'textarea', this.setValue.bind(this))}
                             </Col>
                         </Row>
                     </Form>

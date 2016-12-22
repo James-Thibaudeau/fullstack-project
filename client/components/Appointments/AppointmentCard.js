@@ -64,16 +64,16 @@ class AppointmentCard extends React.Component {
                                     <Col xs={12}>
                                         <Row>
                                             <Col xs={6}>
-                                                {/*this.props.location.country || 'none'*/}
+                                                {this.props.location.locationName || 'none'}
                                             </Col>
                                         </Row>
                                         <Row>
                                             <Col xs={6}>
-                                                {/*this.props.location.address || 'none'*/}
+                                                {this.props.location.address || 'none'}
                                                 <br />
-                                                {/*this.props.location.city || 'none'*/}
+                                                {this.props.location.city || 'none'}
                                                 <br />
-                                                {/*this.props.location.country || 'none'*/}
+                                                {this.props.location.country || 'none'}
                                             </Col>
                                         </Row>
                                     </Col>
@@ -81,7 +81,7 @@ class AppointmentCard extends React.Component {
                                 </Col>
                             </Row>
                             <hr />
-                            {this.renderRow('Descripion', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer imperdiet rutrum lectus, nec molestie urna suscipit vel. Pellentesque at risus vestibulum, mattis nisl sed, aliquet nisl. Morbi risus metus, luctus nec pretium rhoncus, mollis ut justo. Quisque ac tortor in lectus tempor dignissim. Aenean vel tellus malesuada, condimentum est non, lacinia justo. Quisque egestas luctus arcu at efficitur. Curabitur fermentum dignissim massa, nec vulputate augue euismod vitae. Nam ut ullamcorper lorem. Vivamus elementum urna in magna tempor malesuada. Fusce eget elementum dui, et ullamcorper dui. Proin in eros arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.')}
+                            {this.renderRow('Descripion', (this.props.description || 'no description'))}
                         </div>
                         <hr />
                         {this.renderRow('Guests', 'James, Mark, Ilir, Afrim')}
@@ -90,6 +90,21 @@ class AppointmentCard extends React.Component {
            </Panel>
         );
     }
+};
+
+AppointmentCard.defaultProps = {
+  location: {
+      locationName: '',
+      address: '',
+      city: '',
+      country: ''
+  },
+  description: ''
+};
+
+AppointmentCard.propTypes = {
+  location: React.PropTypes.object,
+  description: React.PropTypes.String
 };
 
 export default AppointmentCard;
