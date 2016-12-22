@@ -11,20 +11,24 @@ var AppointmentSchema = new Schema({
   creatorId: {
       type: Schema.Types.ObjectId,
       ref: 'User',
-      required: true,
+      required: true
   },
   location: {
       locationName: { 
           type: String,
+          required: true
       },
       address: {
           type: String,
+          required: true
       },
       city:{
         type: String,
+        required: true
       },
       country: {
           type: String,
+          required: true
       }
   },
   date: {
@@ -38,8 +42,7 @@ var AppointmentSchema = new Schema({
       }
   },
   guests: {
-    type:[Schema.Types.ObjectId], 
-    ref: 'User', 
+    type: String, 
     required:true
   },
   created_at: {
@@ -47,7 +50,7 @@ var AppointmentSchema = new Schema({
     required: true,
     default: Date.now
   },
-  updated_at: Date,
+  updated_at: Date
   
 });
 
