@@ -42,9 +42,10 @@ var AppointmentSchema = new Schema({
       }
   },
   guests: {
-    type: String, 
+    type: Array, 
     required:true
   },
+  description: String,
   created_at: {
     type: Date,
     required: true,

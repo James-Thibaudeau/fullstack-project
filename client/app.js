@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import 'bootstrap/less/bootstrap.less';
 import 'font-awesome/less/font-awesome.less';
 import './styles/style.less';
+import 'react-select/dist/react-select.css';
 // Import Components
 import { App } from './components/App';
 import { MainContainer } from './components/Main';

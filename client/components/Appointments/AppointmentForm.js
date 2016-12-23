@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {ControlLabel, Col, Row, Panel, Form, FormGroup, FormControl, Button} from 'react-bootstrap';
+import { ControlLabel, Col, Row, Panel, Form, FormGroup, FormControl, Button } from 'react-bootstrap';
 import DatePicker from 'react-bootstrap-date-picker';
 import TimePicker from 'react-bootstrap-time-picker';
+import Select from 'react-select';
 import { createAppoinHandler } from '../../actions/AppointmentActions';
 
 class AppointmentForm extends React.Component {
@@ -16,7 +17,8 @@ class AppointmentForm extends React.Component {
             startDate: initdate,
             endDate: initdate,
             startTime: 0,
-            endTime: 0
+            endTime: 0,
+            guests: []
         };
     }
     
@@ -24,21 +26,24 @@ class AppointmentForm extends React.Component {
         e.preventDefault();
         //form validation should go here
         console.log('submitting');
+        const state = this.state;
+        const props = this.props;
+                  
         let appointment = {
-                name: this.state.name,
-                creatorId: this.props.login.user._id,
+                name: state.name,
+                creatorId: props.login.user._id,
                 location: {
-                      locationName: this.state.locationName,
-                      address: this.state.address,
-                      city: this.state.city,
-                      country: this.state.country
+                      locationName: state.locationName,
+                      address: state.address,
+                      city: state.city,
+                      country: state.country
                   },
                   date: {
-                      startDate: this.state.startDate,
-                      endDate: this.state.endDate
+                      startDate: state.startDate,
+                      endDate: state.endDate
                   },
-                  guests: this.state.guests,
-                  description: this.state.description
+                  guests: state.guests,
+                  description: state.description
         };
         console.log(appointment);
         this.props.submit(appointment);
@@ -47,6 +52,12 @@ class AppointmentForm extends React.Component {
     setValue(e) {
         this.setState({
             [e.target.id]: e.target.value
+        });
+    }
+    
+    setSelect(value) {
+        this.setState({
+            guests: value
         });
     }
     
@@ -126,6 +137,27 @@ class AppointmentForm extends React.Component {
             );
     }
     
+    renderSelect() {
+        
+        const options = this.props.users.users.map(user => {
+            return { value: user._id, label: user.username };
+        });
+        
+        return (
+            <FormGroup>
+                <ControlLabel>Guests</ControlLabel>
+                <Select
+                    id="guests"
+                    name="guests"
+                    multi={true}
+                    value={this.state.guests}
+                    options={options}
+                    onChange={this.setSelect.bind(this)}
+                />
+            </FormGroup>
+        );
+    }
+    
     renderDateTime() {
         return (
             <Row>
@@ -196,7 +228,7 @@ class AppointmentForm extends React.Component {
                         {this.renderDateTime()}
                         <Row>
                             <Col xs={12} sm={4}>
-                                {this.renderGroup('guests', 'Guests', 'text', this.setValue.bind(this))}
+                                {this.renderSelect()}
                             </Col>
                             <Col xs={12} sm={8}>
                                 {this.renderGroup('description', 'Descripion', 'textarea', this.setValue.bind(this))}

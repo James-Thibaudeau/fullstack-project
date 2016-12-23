@@ -11,7 +11,8 @@ class AppointmentList extends React.Component {
     }
     
     renderAppointments() {
-        if(this.props.appointments == null){
+        const appointments = this.props.appointments;
+        if(appointments != null && appointments.length != 0){
             return (
                 this.props.appointments.map( (appointment, i) => {
                     return (<AppointmentCard key={i} header={appointment.name} {...appointment} />);
@@ -31,6 +32,14 @@ class AppointmentList extends React.Component {
             </div>
         );
     }
+};
+
+AppointmentList.defaultProps = {
+    appointments: null
+};
+
+AppointmentCard.propTypes = {
+  appointments: React.PropTypes.array
 };
 
 export default AppointmentList;

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {Panel} from 'react-bootstrap';
 import AppointmentList from './AppointmentList';
 import { getAppointmentHandler } from '../../actions/AppointmentActions';
+import { getUserHandler } from '../../actions/UserActions';
 
 class Appointment extends React.Component {
     
@@ -14,8 +15,13 @@ class Appointment extends React.Component {
         this.props.getAppointmentHandler(this.props.login.user._id);
     }
     
+    getUsers() {
+        this.props.getUserHandler();
+    }
+    
     componentDidMount(){
         this.getAppointments();
+        this.getUsers();
     }
     
     render() {
@@ -24,7 +30,7 @@ class Appointment extends React.Component {
                 <Panel>
                     <h1>Appointments</h1>
                     <hr />
-                    <AppointmentList {...this.props.appointments } />
+                    <AppointmentList appointments={this.props.appointments.appointments } />
                 </Panel>
             </div>
         );
@@ -35,4 +41,4 @@ function mapStateToProps(state) {
     return {...state};
 };
 
-export const AppointmentContainer = connect(mapStateToProps, {getAppointmentHandler})(Appointment);
+export const AppointmentContainer = connect(mapStateToProps, { getAppointmentHandler, getUserHandler })(Appointment);

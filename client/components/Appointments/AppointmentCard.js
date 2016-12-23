@@ -10,6 +10,14 @@ class AppointmentCard extends React.Component {
         return moment.parseZone(ISOdate).format('dddd MMMM Do YYYY, hh:mm a');
     }
     
+    formatGuests(guests){
+        let guestString = '';
+        guests.map(guest => {
+            guestString = guestString + ' ' + guest.label;
+        });
+        return guestString;
+    }
+    
     renderRow(header, content) {
         return (
             <Row>
@@ -63,12 +71,12 @@ class AppointmentCard extends React.Component {
                                 <Row>
                                     <Col xs={12}>
                                         <Row>
-                                            <Col xs={6}>
+                                            <Col xs={12}>
                                                 Location Name: {this.props.location.locationName || 'none'}
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <Col xs={6}>
+                                            <Col xs={12}>
                                                 Address: {this.props.location.address || 'none'}
                                                 <br />
                                                 City: {this.props.location.city || 'none'}
@@ -84,7 +92,7 @@ class AppointmentCard extends React.Component {
                             {this.renderRow('Description', (this.props.description || 'no description'))}
                         </div>
                         <hr />
-                        {this.renderRow('Guests', 'James, Mark, Ilir, Afrim')}
+                        {this.renderRow('Guests', this.formatGuests(this.props.guests))}
                     </Col>
                 </div>
            </Panel>
@@ -104,7 +112,7 @@ AppointmentCard.defaultProps = {
 
 AppointmentCard.propTypes = {
   location: React.PropTypes.object,
-  description: React.PropTypes.String
+  description: React.PropTypes.string
 };
 
 export default AppointmentCard;

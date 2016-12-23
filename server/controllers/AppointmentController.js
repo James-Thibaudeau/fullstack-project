@@ -16,6 +16,7 @@ exports.newAppointment = function (req, res) {
     appointment.date = req.body.date;
     appointment.guests = req.body.guests;
     appointment.location = req.body.location;
+    appointment.description = req.body.description;
     
 
     appointment.save(function (err) {
