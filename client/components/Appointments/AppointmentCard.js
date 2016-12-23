@@ -64,16 +64,16 @@ class AppointmentCard extends React.Component {
                                     <Col xs={12}>
                                         <Row>
                                             <Col xs={6}>
-                                                {this.props.location.locationName || 'none'}
+                                                Location Name: {this.props.location.locationName || 'none'}
                                             </Col>
                                         </Row>
                                         <Row>
                                             <Col xs={6}>
-                                                {this.props.location.address || 'none'}
+                                                Address: {this.props.location.address || 'none'}
                                                 <br />
-                                                {this.props.location.city || 'none'}
+                                                City: {this.props.location.city || 'none'}
                                                 <br />
-                                                {this.props.location.country || 'none'}
+                                                Country: {this.props.location.country || 'none'}
                                             </Col>
                                         </Row>
                                     </Col>
@@ -81,7 +81,7 @@ class AppointmentCard extends React.Component {
                                 </Col>
                             </Row>
                             <hr />
-                            {this.renderRow('Descripion', (this.props.description || 'no description'))}
+                            {this.renderRow('Description', (this.props.description || 'no description'))}
                         </div>
                         <hr />
                         {this.renderRow('Guests', 'James, Mark, Ilir, Afrim')}

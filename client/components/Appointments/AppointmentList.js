@@ -11,7 +11,7 @@ class AppointmentList extends React.Component {
     }
     
     renderAppointments() {
-        if(this.props.appointments){
+        if(this.props.appointments == null){
             return (
                 this.props.appointments.map( (appointment, i) => {
                     return (<AppointmentCard key={i} header={appointment.name} {...appointment} />);
