@@ -44,6 +44,13 @@ export function getAppoinFail() {
     };
 }
 
+export const CLEAR_APPOINTMENTS = 'CLEAR_APPOINTMENTS';
+export function clearAppointments() {
+    return {
+        type: CLEAR_APPOINTMENTS
+    }
+}
+
 //appointment handlers
 export function createAppoinHandler(appointment) {
     return dispatch => {

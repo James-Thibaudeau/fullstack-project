@@ -15,6 +15,8 @@ export default function (state = initialState, action) {
       return { appointments: action.appointments, message: action.message };
     case GET_APPOIN_FAIL:
       return { message: action.message };
+    case CLEAR_APPOINTMENTS:
+      return initialState
   }
   return state;
 }
