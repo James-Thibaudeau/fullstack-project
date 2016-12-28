@@ -7,3 +7,10 @@ export function editProfile() {
     }
 }
 
+export const SAVE_PROFILE = 'SAVE_PROFILE';
+export function saveProfile() {
+    return {
+        editingProfile: false,
+        message: 'saving profile'
+    }
+}
