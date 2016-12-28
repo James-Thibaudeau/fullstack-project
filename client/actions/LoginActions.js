@@ -1,6 +1,7 @@
 //login actions
 //importing push and browserHistory doesn't sit well but it works
 import { browserHistory } from 'react-router';
+import { clearAppointments } from './AppointmentActions';
 import axios from 'axios';
 const APIURL = 'https://fullstack-project-jamesthibaudeau.c9users.io/api/';
 
@@ -71,6 +72,7 @@ export function logoutHandler() {
       console.log('Logging out from server');
       axios.get(APIURL+'/auth/logout')
       .then(response => {
+          dispatch(clearAppointments());
           dispatch(logout());
           //this doesn't sit well with me
           browserHistory.push('/');

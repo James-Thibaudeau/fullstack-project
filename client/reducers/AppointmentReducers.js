@@ -1,5 +1,5 @@
 //appointment reducers
-import { CREATE_APPOINTMENT, CREATE_APPOIN_FAIL, GET_APPOINTMENTS, GET_APPOIN_FAIL, FETCH_APPOINTMENTS } from '../actions/AppointmentActions';
+import { CREATE_APPOINTMENT, CREATE_APPOIN_FAIL, GET_APPOINTMENTS, GET_APPOIN_FAIL, FETCH_APPOINTMENTS, CLEAR_APPOINTMENTS } from '../actions/AppointmentActions';
 
 const initialState = {};
 
