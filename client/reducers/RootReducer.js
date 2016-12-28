@@ -4,6 +4,7 @@ import RegisterReducers from './RegisterReducers';
 import LoginReducers from './LoginReducers';
 import AppointmentReducers from './AppointmentReducers';
 import UserReducers from './UserReducers';
+import ProfileReducers from './ProfileReducers';
 
 const rootReducer = combineReducers(
     {   
@@ -11,7 +12,8 @@ const rootReducer = combineReducers(
         register: RegisterReducers,
         login: LoginReducers,
         appointments: AppointmentReducers,
-        users: UserReducers
+        users: UserReducers,
+        profile: ProfileReducers
     });
 
 export default rootReducer;
