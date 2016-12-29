@@ -1,7 +1,7 @@
 var User = require('../models/User');
 
 exports.getUsers = function (req, res) {
-    User.find(function (err, users) {
+    User.find((err, users) => {
         if (err)
             return res.send(err);
 
@@ -10,7 +10,7 @@ exports.getUsers = function (req, res) {
 };
 
 exports.getUserById = function(req, res) {
-    User.findById(req.params.user_id, function(err, user) {
+    User.findById(req.params.user_id, (err, user) => {
         if (err)
             return res.send(err);
         res.json(user);
@@ -19,7 +19,7 @@ exports.getUserById = function(req, res) {
 
 exports.getUserByUserName = function(req, res) {
     var username = {username: req.params.username};
-    User.findOne(username, function(err, user) {
+    User.findOne(username, (err, user) => {
         if(err)
             return res.send(err);
         res.json(user);
@@ -29,7 +29,7 @@ exports.getUserByUserName = function(req, res) {
 exports.removeUser = function (req, res) {
     User.remove({
         _id: req.params.user_id
-    }, function (err, user) {
+    }, (err, user) => {
         if (err)
             return res.send(err);
 
@@ -37,23 +37,27 @@ exports.removeUser = function (req, res) {
     });
 };
 
-    // .put(function (req, res) {
+exports.updateUser = function (req, res) {
 
+    User.findById(req.params.user_id, (err, user) => {
 
-    //     User.findById(req.params.user_id, function (err, user) {
+        if (err) {
+            return res.send(err);
+        }
+        
+        var reqUser = req.body;
 
-    //         if (err)
-    //             res.send(err);
+        user.firstName = reqUser.firstName;
+        user.lastName = reqUser.lastName;  
+        user.email = reqUser.email;
+        
+        user.save(err => {
+            if (err) {
+                return res.send(err);
+            }
 
-    //         user.name = req.body.name;  
+            return res.json({ message: 'User updated!' });
+        });
 
-
-    //         user.save(function (err) {
-    //             if (err)
-    //                 res.send(err);
-
-    //             res.json({ message: 'User updated!' });
-    //         });
-
-    //     });
-    // })
+    });
+};

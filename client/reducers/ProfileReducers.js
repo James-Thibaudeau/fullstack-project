@@ -1,5 +1,5 @@
 //Profile reducers
-import { EDIT_PROFILE } from '../actions/ProfileActions';
+import { EDIT_PROFILE, SAVE_PROFILE } from '../actions/ProfileActions';
 
 const initialState = {editingProfile: false, message:''};
 
