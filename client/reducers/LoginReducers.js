@@ -1,6 +1,6 @@
 //login reducers
 import { Map } from 'immutable';
-import { LOGIN, LOGIN_FAIL, LOGOUT, LOGOUT_FAIL } from '../actions/LoginActions';
+import { LOGIN, LOGIN_FAIL, LOGOUT, LOGOUT_FAIL, UPDATE_USER_INFO } from '../actions/LoginActions';
 
 const initialState = {user: {}, isLoggedIn: false, message:''};
 
@@ -14,6 +14,9 @@ export default function (state = initialState, action) {
       return {user: action.user, isLoggedIn: action.isLoggedIn, message: action.message};
     case LOGOUT_FAIL:
       return {message: action.message};
+    case UPDATE_USER_INFO:
+      return {...state, user: action.user, message: action.message};
+      
   }
   return state;
 }

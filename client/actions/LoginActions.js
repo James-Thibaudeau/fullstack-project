@@ -44,6 +44,28 @@ export function logoutFail() {
     };
 }
 
+//this might not be the correct place for this action
+export const UPDATE_USER_INFO = 'UPDATE_USER_INFO';
+export function updateUserInfo(user) {
+    return {
+        type: UPDATE_USER_INFO,
+        message: 'user updated',
+        user
+    };
+}
+//this function also might be better somewhere else
+export function getUser(username) {
+    return dispatch => {
+        axios.get(APIURL+'users/'+username)
+        .then(response => {
+            dispatch(updateUserInfo(response.data));
+        })
+        .catch(error => {
+            console.log('error getting user');
+        });
+    };
+}
+
 export function loginHandler(username, password) {
     return dispatch => {
         console.log('Sending login request...');
