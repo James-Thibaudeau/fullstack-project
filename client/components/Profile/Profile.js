@@ -15,14 +15,6 @@ class Profile extends React.Component {
         };
     }
     
-    componentWillReceiveProps() {
-        this.setState({
-            firstName: this.props.login.user.firstName || '',
-            lastName: this.props.login.user.lastName || '',
-            email: this.props.login.user.email || ''
-        });
-    }
-    
     edit() {
         console.log('editing profile');
         const props = this.props.login.user;
