@@ -139,7 +139,7 @@ class AppointmentForm extends React.Component {
     
     renderSelect() {
         
-        const options = this.props.users.users.map(user => {
+        const options = this.props.users.map(user => {
             return { value: user._id, label: user.username };
         });
         
@@ -242,7 +242,7 @@ class AppointmentForm extends React.Component {
 };
 
 function mapStateToProps(state) {
-    return {...state};
+    return {...state, users: state.users.users};
 };
 
 export const AppointmentFormContainer = connect(mapStateToProps, { submit: createAppoinHandler })(AppointmentForm);
