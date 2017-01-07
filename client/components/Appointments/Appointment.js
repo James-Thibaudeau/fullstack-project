@@ -12,7 +12,7 @@ class Appointment extends React.Component {
     }
     
     getAppointments() {
-        this.props.getAppointmentHandler(this.props.login.user._id);
+        this.props.getAppointmentHandler(this.props.user._id);
     }
     
     getUsers() {
@@ -30,7 +30,7 @@ class Appointment extends React.Component {
                 <Panel>
                     <h1>Appointments</h1>
                     <hr />
-                    <AppointmentList appointments={this.props.appointments.appointments } />
+                    <AppointmentList appointments={ this.props.appointments } />
                 </Panel>
             </div>
         );
@@ -38,7 +38,7 @@ class Appointment extends React.Component {
 };
 
 function mapStateToProps(state) {
-    return {...state};
+    return {user: state.login.user, appointments: state.appointments.appointments};
 };
 
 export const AppointmentContainer = connect(mapStateToProps, { getAppointmentHandler, getUserHandler })(Appointment);
