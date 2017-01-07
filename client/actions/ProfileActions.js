@@ -1,5 +1,4 @@
 //Profile Actions
-import { getUser } from './LoginActions';
 import axios from 'axios';
 const APIURL = 'https://fullstack-project-jamesthibaudeau.c9users.io/api/';
 

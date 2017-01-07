@@ -1,6 +1,7 @@
 //Registration actions
-import axios from 'axios';
 import { loginHandler } from './LoginActions';
+import axios from 'axios';
+const APIURL = 'https://fullstack-project-jamesthibaudeau.c9users.io/api/';
 
 export const REGISTER = 'REGISTER';
 export function register() {
@@ -14,7 +15,7 @@ export function register() {
 export function registerHandler(username, password) {
     return dispatch => {
         console.log('Sending registration request...');
-        axios.post('https://fullstack-project-jamesthibaudeau.c9users.io/api/auth/register', {
+        axios.post(APIURL + 'auth/register', {
             username,
             password
           })
