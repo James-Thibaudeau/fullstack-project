@@ -17,7 +17,7 @@ class Profile extends React.Component {
     
     edit() {
         console.log('editing profile');
-        const props = this.props.login.user;
+        const props = this.props.user;
         this.setState({
             firstName: props.firstName,
             lastName: props.lastName,
@@ -31,8 +31,8 @@ class Profile extends React.Component {
         const user = {
             ...this.state,
         };
-        const userId = this.props.login.user._id;
-        const username = this.props.login.user.username;
+        const userId = this.props.user._id;
+        const username = this.props.user.username;
         console.log(user);
         this.props.saveProfile(username, userId, user);
         this.props.getUser(username);
@@ -85,7 +85,7 @@ class Profile extends React.Component {
     }
     
     render() {
-        const props = this.props.login.user;
+        const props = this.props.user;
         return (
             <div className="container">
                 <Panel>
@@ -113,7 +113,7 @@ class Profile extends React.Component {
 };
 
 function mapStateToProps(state) {
-    return {...state};
+    return {profile: state.profile, user: state.login.user};
 };
 
 export const ProfileContainer = connect(mapStateToProps, { editProfile, saveProfile: saveProfileHandler, getUser })(Profile);
